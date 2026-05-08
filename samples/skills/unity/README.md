@@ -19,5 +19,6 @@ Current samples:
 - `unity-scriptableobject-singleton/`
 - `unity-scriptableobject-asset-map/`
 - `unity-managed-update-dispatch/`
+- `unity-animator-controller-maintenance/`
 - `unity-scene-editing/`
 - `unity-input-system-settings/`
