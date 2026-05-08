@@ -1,0 +1,7 @@
+# Local quarantined material that still contains project-specific designs,
+# names, paths, hardware details, or implementation history.
+_design-specific-source/
+
+# Local agent workflow state for this repository. Keep public examples,
+# guides, and reusable samples outside this folder.
+_agent-workspace/
