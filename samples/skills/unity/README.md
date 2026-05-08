@@ -19,3 +19,5 @@ Current samples:
 - `unity-scriptableobject-singleton/`
 - `unity-scriptableobject-asset-map/`
 - `unity-managed-update-dispatch/`
+- `unity-scene-editing/`
+- `unity-input-system-settings/`
