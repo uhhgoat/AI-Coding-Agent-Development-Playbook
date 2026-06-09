@@ -9,5 +9,6 @@ Good candidates:
 - dependency inventory
 - safe refactoring checklist
 - operating-procedure documentation updates
+- local Codex app automation setup
 
 Avoid putting project-specific architecture or one-off debugging notes here.
