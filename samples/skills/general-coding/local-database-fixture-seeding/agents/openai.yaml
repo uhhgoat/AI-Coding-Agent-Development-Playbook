@@ -1,0 +1,4 @@
+interface:
+  display_name: "Local Fixture Seeding"
+  short_description: "Seed local database fixtures safely"
+  default_prompt: "Use $local-database-fixture-seeding to create repeatable local test data."

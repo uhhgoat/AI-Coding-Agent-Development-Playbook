@@ -1,0 +1,4 @@
+interface:
+  display_name: "Windows Permission Guard"
+  short_description: "Repair Windows workspace ACL drift"
+  default_prompt: "Use $windows-workspace-permission-guard to inspect and repair a Windows workspace permission issue."

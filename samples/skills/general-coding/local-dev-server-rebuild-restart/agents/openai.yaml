@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dev Server Restart"
+  short_description: "Rebuild and restart local dev servers"
+  default_prompt: "Use $local-dev-server-rebuild-restart to recover a local dev server after a build or pull."

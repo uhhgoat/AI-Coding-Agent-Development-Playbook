@@ -1,0 +1,4 @@
+interface:
+  display_name: "SQL Migration Runner"
+  short_description: "Run and verify database migration scripts"
+  default_prompt: "Use $sql-migration-script-runner to run a local database migration safely."
