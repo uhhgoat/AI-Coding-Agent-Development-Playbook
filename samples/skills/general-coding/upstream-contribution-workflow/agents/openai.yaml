@@ -1,0 +1,4 @@
+interface:
+  display_name: "Upstream Contribution Workflow"
+  short_description: "Prepare narrow upstream issues and PRs"
+  default_prompt: "Use $upstream-contribution-workflow to prepare this fix for upstream review."

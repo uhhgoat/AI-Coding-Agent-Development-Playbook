@@ -9,6 +9,10 @@ Good candidates:
 - dependency inventory
 - safe refactoring checklist
 - operating-procedure documentation updates
+- skill authoring and wrapper generation
+- upstream contribution and review-response workflow
+- provider or endpoint capability mapping
+- static-site launch and deployment safety
 - local Codex app automation setup
 - SQL/database migration script running and verification
 - local-only database fixture seeding and cleanup
@@ -22,5 +26,9 @@ Current samples:
 - `codex-local-automations/`
 - `local-database-fixture-seeding/`
 - `local-dev-server-rebuild-restart/`
+- `provider-capability-mapping/`
+- `skill-authoring/`
 - `sql-migration-script-runner/`
+- `static-site-launch-safety/`
+- `upstream-contribution-workflow/`
 - `windows-workspace-permission-guard/`

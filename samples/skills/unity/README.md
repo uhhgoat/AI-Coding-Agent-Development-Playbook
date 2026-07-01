@@ -8,10 +8,10 @@ names, team names, or local paths beyond common Unity conventions.
 
 Platform-specific Unity workflows belong here even when they are opinionated:
 singleton patterns, ScriptableObject asset maps, Animator Controller editing,
-scene setup, prefab wiring, build pipeline checks, and similar recurring Unity
-workflows. Move only application-design-specific workflows out of the public
-samples, such as a particular game's dialogue schema, encounter format, quest
-pipeline, combat model, or progression system.
+scene setup, prefab wiring, build pipeline checks, ML-Agents training runs, and
+similar recurring Unity workflows. Move only application-design-specific
+workflows out of the public samples, such as a particular game's dialogue
+schema, encounter format, quest pipeline, combat model, or progression system.
 
 Current samples:
 
@@ -22,3 +22,4 @@ Current samples:
 - `unity-animator-controller-maintenance/`
 - `unity-scene-editing/`
 - `unity-input-system-settings/`
+- `unity-ml-agents-training-operations/`

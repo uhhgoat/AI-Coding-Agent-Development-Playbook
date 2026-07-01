@@ -1,0 +1,4 @@
+interface:
+  display_name: "Obsidian Markdown"
+  short_description: "Edit Obsidian markdown safely"
+  default_prompt: "Use $obsidian-markdown to edit this vault note without breaking Obsidian links or metadata."

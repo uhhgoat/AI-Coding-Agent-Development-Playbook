@@ -1,8 +1,13 @@
 # Obsidian Skills
 
-Reserved for public-safe Obsidian vault, markdown, Bases, Canvas, and note
-management samples.
+Public-safe Obsidian vault, markdown, Bases, Canvas, and note management samples.
 
-No Obsidian skill is included yet. Add one only after confirming the source
-material is public-safe, generalized, and not copied from a private vault or
-project workflow without review.
+These samples describe format and safety patterns only. They intentionally avoid
+private vault structures, personal note taxonomies, source document contents,
+local sync paths, and project-specific knowledge graphs.
+
+Current samples:
+
+- `json-canvas/`
+- `obsidian-bases/`
+- `obsidian-markdown/`

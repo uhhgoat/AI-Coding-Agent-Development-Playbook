@@ -36,6 +36,10 @@ The wrappers should contain only:
 - a link to the canonical skill
 - a warning not to duplicate or edit skill content in the wrapper
 
+See `samples/skills/cross-agent-wrapper-example/` for a concrete sample with one
+canonical skill, Codex and Claude skill wrappers, a GitHub Copilot instructions
+wrapper, and small wrapper-generation scripts.
+
 ## Why This Helps
 
 - Every agent receives the same durable recipe.

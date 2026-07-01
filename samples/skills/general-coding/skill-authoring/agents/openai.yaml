@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Authoring"
+  short_description: "Create reusable agent skills and wrappers"
+  default_prompt: "Use $skill-authoring to turn this recurring workflow into a reusable skill."

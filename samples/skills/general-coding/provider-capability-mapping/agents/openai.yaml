@@ -1,0 +1,4 @@
+interface:
+  display_name: "Provider Capability Mapping"
+  short_description: "Gate request fields by provider support"
+  default_prompt: "Use $provider-capability-mapping to make this multi-provider path explicit and testable."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Obsidian Bases"
+  short_description: "Edit Obsidian Bases files safely"
+  default_prompt: "Use $obsidian-bases to update this Base and related note metadata."

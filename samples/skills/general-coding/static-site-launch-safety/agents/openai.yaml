@@ -1,0 +1,4 @@
+interface:
+  display_name: "Static Site Launch Safety"
+  short_description: "Preview and launch static sites safely"
+  default_prompt: "Use $static-site-launch-safety before publishing this static site."

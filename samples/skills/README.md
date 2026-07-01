@@ -9,6 +9,8 @@ Categories:
 - `unity/`
 - `obsidian/`
 - `robotics/`
+- `cross-agent-wrapper-example/` - a concrete canonical skill plus thin wrappers
+  for several coding-agent surfaces.
 
 Each skill should have a focused trigger, clear steps, and enough local context
 for an agent to repeat the task without relying on chat history.

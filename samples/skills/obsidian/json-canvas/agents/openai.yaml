@@ -1,0 +1,4 @@
+interface:
+  display_name: "JSON Canvas"
+  short_description: "Edit Obsidian canvas files safely"
+  default_prompt: "Use $json-canvas to update this `.canvas` file as structured JSON."

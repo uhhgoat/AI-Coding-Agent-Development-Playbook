@@ -1,0 +1,4 @@
+interface:
+  display_name: "Example Review Checklist"
+  short_description: "Run a concise review checklist"
+  default_prompt: "Use $example-review-checklist to review the current change before handoff."
