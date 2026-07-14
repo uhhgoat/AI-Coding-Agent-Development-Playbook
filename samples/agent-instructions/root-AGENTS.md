@@ -57,6 +57,22 @@ their contents.
 - Avoid broad refactors during narrow tasks.
 - Do not introduce new architecture layers without a concrete need.
 
+## Module Maps
+
+If this repository uses `docs/module-maps/` or an equivalent map layer:
+
+- Read the map registry and the smallest applicable map before broad source
+  discovery.
+- Do not preload related maps. Load another map only when a crossed boundary,
+  source evidence, or validation requires it.
+- Verify relevant map claims against authoritative source before editing.
+- Record every connection with direction, relationship kind, and a concise
+  definition of behavior, ownership, timing, data, or constraint.
+- Update affected maps in the same change when mapped nodes, pointers,
+  references, connections, boundaries, or sources of truth change.
+- Keep branch and module coverage statuses plus a verified baseline in the
+  registry.
+
 ## Collaboration And Ownership
 
 - Check `git status --short` before editing.
@@ -69,6 +85,9 @@ their contents.
   review scope, coordination, or explicit approval.
 - Durable progress updates should include actor, timestamp, scope, summary,
   verification, and next intended move.
+- Before merging, rebasing, or cherry-picking, inspect the destination branch's
+  latest instructions and maps. Reconcile the combined maps against integrated
+  source and do not blindly choose `ours` or `theirs` for derived map files.
 
 ## Documentation Rules
 
@@ -81,6 +100,8 @@ or durable project rules change.
 | New module, integration, or staged feature | feature or module plan |
 | Active owner, paused task, blocked task, or handoff | `docs/active-work.md` or plan ownership block |
 | Architecture boundary or dependency direction change | `docs/architecture-baseline.md` or equivalent |
+| Mapped node, relationship, source path, boundary, coverage, or baseline change | affected module map and map registry |
+| Merge, rebase, or cherry-pick with differing instructions or maps | destination-instruction and map reconciliation |
 | Validated milestone, failed live test, important clue, or changed next step | `docs/current-status.md` or equivalent |
 | New standing project rule | `AGENTS.md` |
 | New recurring agent recipe | project skill |

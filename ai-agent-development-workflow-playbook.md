@@ -36,13 +36,15 @@ Use a layered documentation and instruction system:
 4. **Command documentation** records every implemented executable workflow.
 5. **Architecture documentation** records durable system boundaries and
    direction.
-6. **Feature and module plan files** record evolving implementation plans for
+6. **Project module maps** route agents to the smallest relevant source set and
+   explain important relationships without replacing source code.
+7. **Feature and module plan files** record evolving implementation plans for
    active or complex work areas.
-7. **Feature documentation** records deep technical designs for specific areas.
-8. **Signed progress logs** record who changed what, when, why, and what
+8. **Feature documentation** records deep technical designs for specific areas.
+9. **Signed progress logs** record who changed what, when, why, and what
    remains.
-9. **Logs and generated artifacts** preserve evidence from validation runs.
-10. **Final handoffs** summarize what changed, what was verified, and what risk
+10. **Logs and generated artifacts** preserve evidence from validation runs.
+11. **Final handoffs** summarize what changed, what was verified, and what risk
     remains.
 
 Each layer has a different job. Do not collapse all context into one long file.
@@ -71,6 +73,8 @@ It should include:
 - testing expectations
 - code style preferences
 - decision biases for ambiguous tradeoffs
+- whether the repository uses module maps, where their registry lives, and the
+  rules for scoped loading, same-change maintenance, and branch reconciliation
 
 Keep `AGENTS.md` specific enough to guide implementation, but do not make it a
 running progress log. Progress belongs in status files, feature plans, and
@@ -134,6 +138,9 @@ Larger, longer-running, or higher-risk projects should add:
 docs/
   active-work.md
   collaboration-log.md
+  module-maps/
+    README.md
+    <module>.md
   safety-plan.md
   deployment-plan.md
   <feature-or-module>-plan.md
@@ -335,6 +342,7 @@ Then inspect:
 
 - `docs/current-status.md`
 - `docs/active-work.md`, if present
+- the module-map registry and smallest applicable map, if the project uses maps
 - relevant feature/module plan files
 - recent signed progress updates
 - current branch or issue tracker, if available
@@ -348,6 +356,7 @@ Rules:
   content.
 - If another active owner lists the same files, do not edit them unless the
   task is explicitly a handoff, review, merge, or emergency fix.
+- Treat links to related maps as routing choices. Do not preload every map.
 - If a conflict is likely, add a signed note and ask for coordination.
 
 ### Branch And File Ownership
@@ -363,6 +372,8 @@ For parallel work:
 - avoid cross-cutting refactors during parallel feature work
 - communicate expected touched files in the active ownership block
 - update the handoff note when the expected file set changes
+- before integration, inspect destination-branch instructions and maps, then
+  reconcile the final map set against the integrated source
 
 For AI sub-agents, assign disjoint write scopes. A worker should know that other
 people or agents may be changing the repo and should not revert their edits.
@@ -571,6 +582,33 @@ Keep architecture documents explicit about boundaries:
 Update architecture documents when the shape of the system changes, not for
 every small implementation detail.
 
+## Project Module Maps
+
+Use project module maps when repeated work in a non-trivial repository benefits
+from a compact routing layer between architecture docs and source code. Maps
+should answer:
+
+- which module contains the task
+- which authoritative files or assets should be opened first
+- what important nodes exist
+- how those nodes relate through calls, ownership, data, events, lifecycle, or
+  constraints
+- which nearby maps should be loaded only if the task crosses a boundary
+- what branch and module coverage is mapped, incomplete, stale, or unreconciled
+
+Keep a registry such as `docs/module-maps/README.md`, then one concise file per
+useful module boundary. Read the registry and smallest applicable map before
+broad source discovery. Do not load all maps by default.
+
+Update maps in the same change when mapped nodes or connections change. Before
+merging, rebasing, or cherry-picking, inspect the destination branch's current
+instructions and map set, then reconcile maps against the integrated source.
+Maps present on only one side must be evaluated, not silently discarded.
+
+See [Project Module Mapping](guides/project-module-mapping.md) for the status
+model, semantic relationship format, branch reconciliation procedure, and
+utility trace.
+
 ## Feature Documents
 
 Create focused technical documents when a subsystem becomes too detailed for the
@@ -699,6 +737,8 @@ Use the same lifecycle for most tasks:
    - Read the repo-local skill if one applies.
    - Read `docs/current-status.md`.
    - Read `docs/active-work.md` if present.
+   - If module maps exist, read their registry and the smallest applicable map.
+     Treat related-map links as routing choices, not a preload list.
    - Read relevant architecture or command docs.
    - Read the feature/module plan file when the task belongs to an active work
      area.
@@ -722,6 +762,8 @@ Use the same lifecycle for most tasks:
 5. **Scope**
    - Prefer the smallest implementation that satisfies the request and fits the
      architecture.
+   - Use the applicable map to choose the initial source set, then expand only
+     when source evidence or a crossed boundary requires it.
    - Preserve existing conventions.
    - Avoid unrelated refactors.
    - Avoid editing upstream or generated code unless explicitly approved.
@@ -756,6 +798,8 @@ Use the same lifecycle for most tasks:
    - Update feature/module plan files for evolving implementation steps,
      findings, checklists, validation results, and next-session guidance.
    - Update architecture or feature docs for boundary changes.
+   - Update the map registry and affected maps when mapped nodes, relationships,
+     coverage, or baselines change.
    - Update repo-local skills or `AGENTS.md` when standing instructions change.
 
 10. **Handoff**
@@ -1006,6 +1050,8 @@ Use this matrix to decide what to update:
 | New active owner, paused task, blocked task, or handoff | feature/module plan ownership block and `docs/active-work.md` if present |
 | Cross-feature ownership transfer, background-agent handoff, or coordination decision | `docs/collaboration-log.md` if present |
 | New module boundary, runtime layer, dependency direction, or deployment shape | `docs/architecture-baseline.md` or feature architecture doc |
+| Added, removed, or changed mapped node, relationship, boundary, or source-of-truth path | affected module map and registry status/baseline |
+| Merge, rebase, or cherry-pick involving different instructions or map sets | reconcile destination instructions, registry, and affected maps against integrated source |
 | New safety behavior, high-risk command, approval gate, recovery path, or hazard | safety plan and command guide |
 | New validated milestone, failed live test, changed next step, or important clue | `docs/current-status.md` |
 | New persistent project rule or protected boundary | `AGENTS.md` |
@@ -1023,6 +1069,8 @@ Agents following this workflow should:
 
 - read instructions before editing
 - inspect the repository shape before making assumptions
+- load only the smallest applicable module map before broad discovery when maps
+  exist
 - check active ownership before touching shared areas
 - prefer fast search tools
 - read relevant files in parallel when possible
@@ -1124,13 +1172,15 @@ recovery sequence:
 2. Read the relevant repo-local skill.
 3. Read `docs/current-status.md`.
 4. Read `docs/active-work.md` if present.
-5. Read `docs/command-guide.md` for the affected area.
-6. Read `docs/architecture-baseline.md` or feature docs for boundary context.
-7. Read the feature/module plan file if one exists for the affected area.
-8. Inspect `git status --short`.
-9. Inspect recent logs or exports only if `current-status.md`, `active-work.md`,
+5. Read the module-map registry and smallest applicable map if present. Do not
+   preload unrelated maps.
+6. Read `docs/command-guide.md` for the affected area.
+7. Read `docs/architecture-baseline.md` or feature docs for boundary context.
+8. Read the feature/module plan file if one exists for the affected area.
+9. Inspect `git status --short`.
+10. Inspect recent logs or exports only if `current-status.md`, `active-work.md`,
    the collaboration log, or the relevant plan file points to them.
-10. Continue from the relevant `Next Intended Move`.
+11. Continue from the relevant `Next Intended Move`.
 
 This sequence is the reason the documentation set exists.
 
@@ -1155,19 +1205,21 @@ Do not turn a review into a rewrite unless the user asks for fixes.
 When asked to implement:
 
 1. Read relevant instructions and docs.
-2. Locate existing patterns.
-3. Check active ownership and dirty worktree state.
-4. Create or update the feature/module plan file when the work is new, complex,
+2. If module maps exist, load the registry and smallest applicable map, then
+   verify its relevant claims against source.
+3. Locate existing patterns.
+4. Check active ownership and dirty worktree state.
+5. Create or update the feature/module plan file when the work is new, complex,
    staged, safety-sensitive, or likely to be paused and resumed later.
-5. Add or update ownership for the area.
-6. Choose the smallest architecture-consistent design.
-7. Implement the reusable module first when practical.
-8. Add CLI, app, service, or UI exposure second.
-9. Add focused tests.
-10. Run verification.
-11. Update docs and signed progress logs.
-12. Mark ownership completed, paused, blocked, or handed off.
-13. Handoff with changed files, verification, and remaining risk.
+6. Add or update ownership for the area.
+7. Choose the smallest architecture-consistent design.
+8. Implement the reusable module first when practical.
+9. Add CLI, app, service, or UI exposure second.
+10. Add focused tests.
+11. Run verification.
+12. Update affected maps, other docs, and signed progress logs.
+13. Mark ownership completed, paused, blocked, or handed off.
+14. Handoff with changed files, verification, and remaining risk.
 
 If the implementation touches a high-risk surface, add safety gates before
 adding convenience flows.
@@ -1306,6 +1358,22 @@ Do not bury failures. If verification was incomplete, say so.
 - `tests/` for test coverage.
 - `logs/` and `exports/` for generated artifacts.
 
+## Module Maps
+
+- Read `docs/module-maps/README.md` and the smallest applicable map before broad
+  source discovery when this project uses maps.
+- Do not load every related map. Expand only when a crossed boundary, source
+  evidence, or validation requires it.
+- Keep each connection concise and semantic: direction, relationship kind, and
+  the relevant behavior, ownership, timing, or constraint.
+- Update affected maps in the same change when mapped nodes or relationships
+  change.
+- Track branch and module coverage with explicit statuses and a verified
+  baseline.
+- Before merging, rebasing, or cherry-picking, inspect destination-branch
+  instructions and maps, then reconcile the final map set against integrated
+  source.
+
 ## Project Skill
 
 - Keep `.codex/skills/<project-slug>/SKILL.md` aligned with major workflow,
@@ -1394,6 +1462,9 @@ preserving project status.
 - Add signed progress updates for meaningful discoveries, validations, blocked
   states, ownership transfers, and handoffs.
 - Update architecture docs when boundaries or deployment direction change.
+- Read only the smallest applicable module map before broad discovery, and keep
+  affected maps current when nodes or relationships change.
+- Reconcile destination-branch instructions and maps during branch integration.
 - Update stakeholder docs when presentation-facing status changes.
 
 ## Current Architecture Direction
@@ -1911,7 +1982,17 @@ this order:
    - Identify existing docs, tests, logs, and generated artifacts.
    - Identify likely shared files or modules where ownership records will help.
 
-2. **Classify the project risk**
+2. **Decide whether module maps are warranted**
+   - Add maps when repeated work would otherwise require broad discovery across
+     non-obvious module relationships.
+   - Skip them for small repositories whose architecture docs already provide
+     sufficient navigation.
+   - If adopted, create a registry with explicit branch and module statuses,
+     then map modules independently as recurring work justifies them.
+   - Define scoped loading, semantic relationship, same-change maintenance, and
+     destination-branch reconciliation rules.
+
+3. **Classify the project risk**
    - Is it purely local software?
    - Does it touch production?
    - Does it control hardware?
@@ -1919,59 +2000,61 @@ this order:
      outcomes?
    - Can multiple humans, branches, terminals, or agents edit it at once?
 
-3. **Write `AGENTS.md`**
+4. **Write `AGENTS.md`**
    - Encode durable rules.
    - Protect upstream and generated code.
    - Define architecture direction.
    - Define documentation responsibilities.
    - Define coordination, ownership, and stale-work rules.
+   - If maps are adopted, require the smallest applicable map to be loaded first
+     and reconciled during branch integration.
    - Define safety and test expectations.
 
-4. **Create the repo-local skill**
+5. **Create the repo-local skill**
    - Summarize the most important rules.
    - Include trigger conditions.
    - Point to the living docs.
    - Include the active-work and handoff rules agents must not forget.
    - Keep it short enough to load often.
 
-5. **Create `docs/current-status.md`**
+6. **Create `docs/current-status.md`**
    - Record the active phase.
    - Record the active work summary when concurrent work exists.
    - Record the latest verified result.
    - Record the next intended move.
    - Record current risks.
 
-6. **Create `docs/command-guide.md`**
+7. **Create `docs/command-guide.md`**
    - Record build commands first.
    - Add command safety levels.
    - Add setup and environment.
    - Add each implemented command as it appears.
 
-7. **Create `docs/architecture-baseline.md`**
+8. **Create `docs/architecture-baseline.md`**
    - Record the desired system layers.
    - Record dependency direction.
    - Record non-goals.
    - Record runtime and coordination modes.
    - Record near-term milestones.
 
-8. **Create active-work or collaboration docs when needed**
+9. **Create active-work or collaboration docs when needed**
    - Create `docs/active-work.md` if concurrent work is likely.
    - Create `docs/collaboration-log.md` if cross-feature handoffs, background
      agents, or frequent ownership transfers are likely.
    - Keep these files as indexes and append-only records, not replacements for
      feature/module plans.
 
-9. **Create the first feature or module plan when work begins**
+10. **Create the first feature or module plan when work begins**
    - Start a plan file before a complex feature accumulates hidden chat-only
      context.
    - Record active ownership, starting point, goals, staged implementation plan,
      validation plan, failure modes, and next-session checklist.
 
-10. **Add feature docs as designs mature**
+11. **Add feature docs as designs mature**
    - Create a document when a subsystem outgrows the baseline architecture.
    - Promote stable design from plans into feature architecture docs.
 
-11. **Keep everything synchronized**
+12. **Keep everything synchronized**
    - Docs are part of the definition of done.
    - Every future agent should be able to resume from the files alone.
    - Every future collaborator should be able to tell who owns active work and
@@ -1990,6 +2073,10 @@ A task is done when:
 - command docs are updated for executable changes
 - current status is updated for milestone or validation changes
 - feature/module plan files are updated for active implementation work
+- affected module maps and registry statuses are updated when mapped nodes,
+  relationships, coverage, or integration baselines change
+- destination-branch instructions and maps were checked and reconciled for any
+  merge, rebase, or cherry-pick
 - ownership is marked completed, paused, blocked, or handed off
 - collaboration logs are updated for cross-workstream handoffs when the project
   uses them
@@ -2017,6 +2104,12 @@ Avoid these:
 - leaving future agents without a concrete next step
 - using broad refactors to solve narrow requests
 - ignoring dirty worktrees
+- loading every map instead of selecting the smallest applicable map
+- listing related classes without explaining the direction and logic of the
+  relationship
+- letting maps drift until a later documentation pass
+- resolving map conflicts with `ours` or `theirs` instead of checking the
+  integrated source and destination instructions
 - treating a passing build as a complete validation for high-risk behavior
 
 ## Quick Start For A New Agent
@@ -2027,16 +2120,19 @@ If you are an AI agent entering a repository that follows this playbook:
 2. Load the repo-local skill if one applies.
 3. Read `docs/current-status.md`.
 4. Read `docs/active-work.md` if present.
-5. Read `docs/command-guide.md` for the area you will touch.
-6. Read the feature/module plan file for the area, if one exists.
-7. Read architecture or feature docs for module boundaries.
-8. Run `git status --short`.
-9. Classify the task and safety level.
-10. Check active ownership and dirty worktree state.
-11. Implement or answer within the existing architecture.
-12. Verify.
-13. Update docs with signed progress notes.
-14. Handoff clearly.
+5. If module maps exist, read their registry and the smallest applicable map;
+   do not preload the catalog.
+6. Read `docs/command-guide.md` for the area you will touch.
+7. Read the feature/module plan file for the area, if one exists.
+8. Read architecture or feature docs for module boundaries.
+9. Run `git status --short`.
+10. Classify the task and safety level.
+11. Check active ownership and dirty worktree state.
+12. Implement or answer within the existing architecture.
+13. Update affected maps if source relationships or coverage changed.
+14. Verify.
+15. Update docs with signed progress notes.
+16. Handoff clearly.
 
 The goal is not just to complete one task. The goal is to leave the repository
 more recoverable and less collision-prone for the next human or agent than it

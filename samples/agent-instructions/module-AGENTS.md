@@ -20,12 +20,20 @@ This file applies to the current module or subtree. It supplements the root
 ## Local Workflow
 
 - Read this file before editing files in this subtree.
+- If the project uses module maps, read the registry and this module's map before
+  broad source discovery. Load related maps only when the task crosses a
+  documented boundary.
 - Read the module plan, if one exists.
+- Keep the module map current in the same change when nodes, directed
+  relationships, boundaries, or sources of truth change.
 - Update the module plan when implementation direction, validation, ownership,
   or next steps change.
 - Add or update module-specific commands, editor workflows, debug-console
   actions, setup steps, or validation procedures in the command guide or the
   project's equivalent runbook.
+
+During branch integration, check the destination branch's current root and
+module instructions before reconciling this map against the integrated source.
 
 ## Verification
 

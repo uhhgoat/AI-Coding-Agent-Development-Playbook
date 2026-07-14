@@ -3,6 +3,7 @@
 Generic samples that can be copied, adapted, or used as patterns.
 
 - `agent-instructions/` - root and module-level `AGENTS.md` samples.
+- `module-maps/` - a coverage registry and semantic relationship map sample.
 - `skills/` - sample skills grouped by domain.
 
 Before copying a sample into a real repository, adapt the names, paths, and

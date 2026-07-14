@@ -16,10 +16,13 @@ to an existing repository.
    - `docs/architecture-baseline.md`, or an existing architecture reference
    - `docs/active-work.md`, or an equivalent ownership tracker, when multiple
      people or agents may work at once
-5. Ask it to propose project skills only for recurring, durable tasks.
-6. Ask it to add tool-specific shims only after there is one canonical skill
+5. Ask it whether repeated repository discovery justifies project module maps.
+   If so, create a coverage registry, map modules independently, and add scoped
+   loading, maintenance, and branch-reconciliation rules to the instructions.
+6. Ask it to propose project skills only for recurring, durable tasks.
+7. Ask it to add tool-specific shims only after there is one canonical skill
    body worth sharing across tools.
-7. Review the resulting docs for project-specific facts, team names, private
+8. Review the resulting docs for project-specific facts, team names, private
    paths, secrets, and stale assumptions before committing.
 
 ## Adapt The Shape
@@ -41,6 +44,10 @@ roles, but adapt the structure to the target repository.
   dependency direction, runtime layers, data ownership, and integration points.
 - `docs/active-work.md` is most useful when several humans or agents may overlap.
   A small solo project may use a lighter status section instead.
+- `docs/module-maps/` is an optional navigation layer for non-trivial projects.
+  Its registry should expose branch and module coverage, while each map explains
+  concise directed relationships and names the authoritative sources to inspect.
+  Agents should load only the smallest applicable map.
 - Skills should describe recurring project work. Do not create a skill for a
   one-time bug investigation unless that investigation revealed a reusable
   workflow.
@@ -52,6 +59,8 @@ roles, but adapt the structure to the target repository.
 - Keep command syntax and validated workflows in a command guide or equivalent
   runbook.
 - Keep active ownership and handoffs visible when people or agents overlap.
+- Keep affected maps synchronized with source changes and reconcile destination
+  instructions and map sets during merges, rebases, or cherry-picks.
 - Keep skills focused on repeatable tasks, not one-off debugging notes.
 
 ## Unity Example Direction

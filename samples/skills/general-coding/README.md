@@ -5,6 +5,7 @@ General coding skills should apply across many repositories and frameworks.
 Good candidates:
 
 - code review workflow
+- scoped project module-map loading and maintenance
 - test triage
 - dependency inventory
 - safe refactoring checklist
@@ -26,6 +27,7 @@ Current samples:
 - `codex-local-automations/`
 - `local-database-fixture-seeding/`
 - `local-dev-server-rebuild-restart/`
+- `maintain-project-module-maps/`
 - `provider-capability-mapping/`
 - `skill-authoring/`
 - `sql-migration-script-runner/`

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maintain Project Module Maps"
+  short_description: "Load and maintain scoped project module maps"
+  default_prompt: "Use $maintain-project-module-maps to load the smallest relevant map, verify the affected source relationships, and keep map coverage current."

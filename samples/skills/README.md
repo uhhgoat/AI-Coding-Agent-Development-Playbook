@@ -15,5 +15,8 @@ Categories:
 Each skill should have a focused trigger, clear steps, and enough local context
 for an agent to repeat the task without relying on chat history.
 
+The `general-coding/maintain-project-module-maps/` sample pairs with the
+project-neutral mapping guide and module-map templates.
+
 Treat these as examples of skill design. A project can rename categories, choose
 different canonical skill paths, or skip categories that do not match its stack.

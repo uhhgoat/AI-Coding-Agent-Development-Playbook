@@ -9,8 +9,10 @@ resume, and safely maintain.
 
 - `ai-agent-development-workflow-playbook.md` - the reusable workflow playbook.
 - `guides/` - guides for adapting the playbook and sharing skills across
-  coding agents.
+  coding agents, including optional project module mapping.
 - `samples/agent-instructions/` - root and module-level `AGENTS.md` samples.
+- `samples/module-maps/` - a project-neutral map registry and semantic module
+  map example.
 - `samples/skills/` - sample skills split by domain, including general coding,
   documentation, Unity, Obsidian, and robotics categories.
 
@@ -33,6 +35,11 @@ Then propose and implement a project-specific agent workflow:
   docs/architecture-baseline.md, or map those roles to existing project docs
 - create docs/active-work.md, or an equivalent ownership tracker, if multiple
   people or agents may work at once
+- decide whether recurring repository discovery justifies project module maps;
+  if so, create a coverage registry and map modules independently
+- require agents to load only the smallest applicable map, maintain affected
+  relationships in the same change, and reconcile destination-branch
+  instructions and maps during integration
 - recommend project skills only for recurring tasks
 - if useful, add one canonical skill and thin wrappers for Codex, Claude, and
   GitHub Copilot, following guides/sharing-skills-across-coding-agents.md
