@@ -1,0 +1,1191 @@
+{
+  "schema_version": 1,
+  "library_version": "1.0.0",
+  "blender_version": "4.5.5 LTS",
+  "minimum_blender": "4.3.0",
+  "scope": "general-purpose procedural material source graphs",
+  "license_note": "Original graph implementation. Verify the destination repository's license before redistribution.",
+  "provenance": {
+    "construction": "independently authored from general procedural-shading principles",
+    "external_images": [],
+    "copied_tutorial_graphs": []
+  },
+  "style_profiles": {
+    "grounded-realism": "Realistic scale and material identity with restrained multi-frequency detail; performance-aware rather than hyperreal.",
+    "clean-stylized": "Broad color/value blocks, reduced micro response, and sparse normals; select only when clean stylization is explicitly requested."
+  },
+  "output_blend": "general-procedural-material-library-v1.blend",
+  "preview": "material-library-preview.png",
+  "groups": [
+    {
+      "name": "GP_Surface_ForgedMetal_v1",
+      "family": "metal",
+      "coordinate_contract": "Object/material space in meters; align axes only when scratches need a direction.",
+      "physical_scale_unit": "meters",
+      "provenance": "independently-authored-general-purpose",
+      "nodes": 24,
+      "links": 36,
+      "sockets": [
+        {
+          "name": "Base Color",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "name": "Roughness",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Metallic",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Normal",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketVector",
+          "default": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "Height",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Wear",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Vector",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketVector",
+          "default": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "Scale (1/m)",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Macro Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Mid Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Micro Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Normal Strength",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.25
+        },
+        {
+          "name": "Wear Mask",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Wear Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Dark Metal",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.03500000014901161,
+            0.04500000178813934,
+            0.054999999701976776,
+            1.0
+          ]
+        },
+        {
+          "name": "Light Metal",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.2199999988079071,
+            0.25,
+            0.2800000011920929,
+            1.0
+          ]
+        },
+        {
+          "name": "Roughness Min",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.41999998688697815
+        },
+        {
+          "name": "Roughness Max",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.7200000286102295
+        },
+        {
+          "name": "Hammer Frequency",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 26.0
+        },
+        {
+          "name": "Pit Frequency",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 150.0
+        }
+      ]
+    },
+    {
+      "name": "GP_Surface_Leather_v1",
+      "family": "leather",
+      "coordinate_contract": "UV or object/material space in meters; use UVs for straps, stitches, and directional stretch.",
+      "physical_scale_unit": "meters",
+      "provenance": "independently-authored-general-purpose",
+      "nodes": 25,
+      "links": 38,
+      "sockets": [
+        {
+          "name": "Base Color",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "name": "Roughness",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Metallic",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Normal",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketVector",
+          "default": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "Height",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Wear",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Vector",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketVector",
+          "default": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "Scale (1/m)",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Macro Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Mid Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Micro Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Normal Strength",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.25
+        },
+        {
+          "name": "Wear Mask",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Wear Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Leather Dark",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.03500000014901161,
+            0.012000000104308128,
+            0.006000000052154064,
+            1.0
+          ]
+        },
+        {
+          "name": "Leather Light",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.20000000298023224,
+            0.06499999761581421,
+            0.02500000037252903,
+            1.0
+          ]
+        },
+        {
+          "name": "Roughness Min",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.3400000035762787
+        },
+        {
+          "name": "Roughness Max",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.6800000071525574
+        },
+        {
+          "name": "Cell Frequency",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 90.0
+        },
+        {
+          "name": "Pore Frequency",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 300.0
+        }
+      ]
+    },
+    {
+      "name": "GP_Surface_Masonry_v1",
+      "family": "masonry",
+      "coordinate_contract": "UV or object/material space in meters; preserve scale across modular pieces.",
+      "physical_scale_unit": "meters",
+      "provenance": "independently-authored-general-purpose",
+      "nodes": 21,
+      "links": 36,
+      "sockets": [
+        {
+          "name": "Base Color",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "name": "Roughness",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Metallic",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Normal",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketVector",
+          "default": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "Height",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Wear",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Vector",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketVector",
+          "default": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "Scale (1/m)",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Macro Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Mid Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Micro Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Normal Strength",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.25
+        },
+        {
+          "name": "Wear Mask",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Wear Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Stone Dark",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.11999999731779099,
+            0.10499999672174454,
+            0.08500000089406967,
+            1.0
+          ]
+        },
+        {
+          "name": "Stone Light",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.41999998688697815,
+            0.3700000047683716,
+            0.28999999165534973,
+            1.0
+          ]
+        },
+        {
+          "name": "Mortar Color",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.11999999731779099,
+            0.10999999940395355,
+            0.09000000357627869,
+            1.0
+          ]
+        },
+        {
+          "name": "Stone Roughness",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.6800000071525574
+        },
+        {
+          "name": "Mortar Roughness",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.8999999761581421
+        },
+        {
+          "name": "Block Width (m)",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.2800000011920929
+        },
+        {
+          "name": "Block Height (m)",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.11999999731779099
+        },
+        {
+          "name": "Mortar Size (m)",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.008999999612569809
+        }
+      ]
+    },
+    {
+      "name": "GP_Surface_Plaster_v1",
+      "family": "plaster",
+      "coordinate_contract": "Object/material space in meters; use authored masks for missing plaster or damp.",
+      "physical_scale_unit": "meters",
+      "provenance": "independently-authored-general-purpose",
+      "nodes": 20,
+      "links": 30,
+      "sockets": [
+        {
+          "name": "Base Color",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "name": "Roughness",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Metallic",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Normal",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketVector",
+          "default": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "Height",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Wear",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Vector",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketVector",
+          "default": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "Scale (1/m)",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Macro Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Mid Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Micro Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Normal Strength",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.25
+        },
+        {
+          "name": "Wear Mask",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Wear Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Plaster Dark",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.2800000011920929,
+            0.23000000417232513,
+            0.17000000178813934,
+            1.0
+          ]
+        },
+        {
+          "name": "Plaster Light",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.7200000286102295,
+            0.6200000047683716,
+            0.46000000834465027,
+            1.0
+          ]
+        },
+        {
+          "name": "Roughness Min",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.6600000262260437
+        },
+        {
+          "name": "Roughness Max",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.8999999761581421
+        },
+        {
+          "name": "Trowel Frequency",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 7.0
+        },
+        {
+          "name": "Pore Frequency",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 180.0
+        }
+      ]
+    },
+    {
+      "name": "GP_Surface_PolishedMetal_v1",
+      "family": "metal",
+      "coordinate_contract": "Object/material space in meters; local Z follows brushing or grinding direction.",
+      "physical_scale_unit": "meters",
+      "provenance": "independently-authored-general-purpose",
+      "nodes": 23,
+      "links": 33,
+      "sockets": [
+        {
+          "name": "Base Color",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "name": "Roughness",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Metallic",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Normal",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketVector",
+          "default": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "Height",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Wear",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Vector",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketVector",
+          "default": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "Scale (1/m)",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Macro Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Mid Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Micro Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Normal Strength",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.25
+        },
+        {
+          "name": "Wear Mask",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Wear Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Metal Dark",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.18000000715255737,
+            0.20999999344348907,
+            0.23999999463558197,
+            1.0
+          ]
+        },
+        {
+          "name": "Metal Light",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.5799999833106995,
+            0.6499999761581421,
+            0.7200000286102295,
+            1.0
+          ]
+        },
+        {
+          "name": "Roughness Min",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.11999999731779099
+        },
+        {
+          "name": "Roughness Max",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.30000001192092896
+        },
+        {
+          "name": "Brush Frequency",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 220.0
+        },
+        {
+          "name": "Scratch Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.25
+        }
+      ]
+    },
+    {
+      "name": "GP_Surface_WoodGrain_v1",
+      "family": "wood",
+      "coordinate_contract": "Object/material space; local Z follows the grain and XY crosses the virtual log.",
+      "physical_scale_unit": "meters",
+      "provenance": "independently-authored-general-purpose",
+      "nodes": 36,
+      "links": 50,
+      "sockets": [
+        {
+          "name": "Base Color",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "name": "Roughness",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Metallic",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Normal",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketVector",
+          "default": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "Height",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Wear",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Vector",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketVector",
+          "default": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "Scale (1/m)",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Macro Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Mid Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Micro Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Normal Strength",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.25
+        },
+        {
+          "name": "Wear Mask",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Wear Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Earlywood Color",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.11999999731779099,
+            0.03500000014901161,
+            0.00800000037997961,
+            1.0
+          ]
+        },
+        {
+          "name": "Latewood Color",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.41999998688697815,
+            0.17000000178813934,
+            0.04500000178813934,
+            1.0
+          ]
+        },
+        {
+          "name": "Roughness Min",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.2199999988079071
+        },
+        {
+          "name": "Roughness Max",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.47999998927116394
+        },
+        {
+          "name": "Ring Frequency",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 14.0
+        },
+        {
+          "name": "Fiber Frequency",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 38.0
+        },
+        {
+          "name": "Finish Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.5
+        }
+      ]
+    },
+    {
+      "name": "GP_Surface_WovenCloth_v1",
+      "family": "cloth",
+      "coordinate_contract": "UV or material space; local X and Y follow warp and weft.",
+      "physical_scale_unit": "meters",
+      "provenance": "independently-authored-general-purpose",
+      "nodes": 23,
+      "links": 35,
+      "sockets": [
+        {
+          "name": "Base Color",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "name": "Roughness",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Metallic",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Normal",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketVector",
+          "default": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "Height",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Wear",
+          "direction": "OUTPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Vector",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketVector",
+          "default": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "Scale (1/m)",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Macro Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Mid Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Micro Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 1.0
+        },
+        {
+          "name": "Normal Strength",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.25
+        },
+        {
+          "name": "Wear Mask",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Wear Amount",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.0
+        },
+        {
+          "name": "Cloth Dark",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.02500000037252903,
+            0.03500000014901161,
+            0.05000000074505806,
+            1.0
+          ]
+        },
+        {
+          "name": "Cloth Light",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketColor",
+          "default": [
+            0.10000000149011612,
+            0.1599999964237213,
+            0.23999999463558197,
+            1.0
+          ]
+        },
+        {
+          "name": "Roughness Min",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.6800000071525574
+        },
+        {
+          "name": "Roughness Max",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 0.8999999761581421
+        },
+        {
+          "name": "Thread Frequency",
+          "direction": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "default": 180.0
+        }
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "name": "GP_CleanStylized_Leather",
+      "style_profile": "clean-stylized",
+      "source_group": "GP_Surface_Leather_v1",
+      "engine_path": "bake approved PBR channels or recreate in target shader"
+    },
+    {
+      "name": "GP_CleanStylized_Metal",
+      "style_profile": "clean-stylized",
+      "source_group": "GP_Surface_ForgedMetal_v1",
+      "engine_path": "bake approved PBR channels or recreate in target shader"
+    },
+    {
+      "name": "GP_CleanStylized_Stone",
+      "style_profile": "clean-stylized",
+      "source_group": "GP_Surface_Masonry_v1",
+      "engine_path": "bake approved PBR channels or recreate in target shader"
+    },
+    {
+      "name": "GP_CleanStylized_Wood",
+      "style_profile": "clean-stylized",
+      "source_group": "GP_Surface_WoodGrain_v1",
+      "engine_path": "bake approved PBR channels or recreate in target shader"
+    },
+    {
+      "name": "GP_Grounded_ForgedIron",
+      "style_profile": "grounded-realism",
+      "source_group": "GP_Surface_ForgedMetal_v1",
+      "engine_path": "bake approved PBR channels or recreate in target shader"
+    },
+    {
+      "name": "GP_Grounded_LimePlaster",
+      "style_profile": "grounded-realism",
+      "source_group": "GP_Surface_Plaster_v1",
+      "engine_path": "bake approved PBR channels or recreate in target shader"
+    },
+    {
+      "name": "GP_Grounded_LimestoneMasonry",
+      "style_profile": "grounded-realism",
+      "source_group": "GP_Surface_Masonry_v1",
+      "engine_path": "bake approved PBR channels or recreate in target shader"
+    },
+    {
+      "name": "GP_Grounded_OiledLeather",
+      "style_profile": "grounded-realism",
+      "source_group": "GP_Surface_Leather_v1",
+      "engine_path": "bake approved PBR channels or recreate in target shader"
+    },
+    {
+      "name": "GP_Grounded_PolishedAsh",
+      "style_profile": "grounded-realism",
+      "source_group": "GP_Surface_WoodGrain_v1",
+      "engine_path": "bake approved PBR channels or recreate in target shader"
+    },
+    {
+      "name": "GP_Grounded_PolishedSteel",
+      "style_profile": "grounded-realism",
+      "source_group": "GP_Surface_PolishedMetal_v1",
+      "engine_path": "bake approved PBR channels or recreate in target shader"
+    },
+    {
+      "name": "GP_Grounded_WovenWool",
+      "style_profile": "grounded-realism",
+      "source_group": "GP_Surface_WovenCloth_v1",
+      "engine_path": "bake approved PBR channels or recreate in target shader"
+    }
+  ],
+  "usage": [
+    "Append or link a preset material, or append a GP_Surface_* node group.",
+    "Supply object/material coordinates in meters; align documented material axes.",
+    "Replace Wear Mask with painted, geometric, or baked causal masks.",
+    "Tune macro, mid, micro, and normal controls at intended viewing distance.",
+    "Bake approved channels before game-engine export; Blender nodes do not transfer through FBX."
+  ]
+}

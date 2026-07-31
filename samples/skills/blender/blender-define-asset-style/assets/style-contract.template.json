@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "asset": {
+    "name": "",
+    "stage": "",
+    "profile": "custom",
+    "intent_summary": ""
+  },
+  "references": [
+    {
+      "path": "",
+      "sha256": "",
+      "rights_note": "",
+      "declared_view": "",
+      "projection": "unknown",
+      "perspective_strength": "unknown",
+      "object_space_symmetry": "unknown",
+      "reference_recap": ""
+    }
+  ],
+  "evidence_labels": {
+    "reference_fidelity": "approximate",
+    "construction_realism": "stylized",
+    "surface_realism": "placeholder"
+  },
+  "style_axes": {
+    "proportion_strategy": "",
+    "construction_plausibility": "",
+    "shape_language": "",
+    "visual_hierarchy": "",
+    "geometry_detail_density": "",
+    "material_realism": "",
+    "surface_frequency": "",
+    "wear_narrative": "",
+    "presentation_target": ""
+  },
+  "visual_hierarchy": {
+    "primary_element": "",
+    "secondary_elements": [],
+    "allowed_exaggerations": [],
+    "required_restraints": []
+  },
+  "ratios_and_landmarks": [
+    {
+      "name": "",
+      "target": 0.0,
+      "unit": "ratio",
+      "evidence": "reference-estimated",
+      "tolerance": 0.0
+    }
+  ],
+  "surface_targets": {
+    "macro": "",
+    "mid_frequency": "",
+    "micro": "",
+    "base_color": "",
+    "roughness": "",
+    "normal_or_height": ""
+  },
+  "review": {
+    "fixed_views": [],
+    "gameplay_distance_m": 0.0,
+    "close_review_distance_m": 0.0,
+    "human_acceptance_questions": [],
+    "known_limits": []
+  }
+}

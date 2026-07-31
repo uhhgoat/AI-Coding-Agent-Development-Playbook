@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "asset": {
+    "name": "Original Grounded Fixture",
+    "stage": "modeling",
+    "profile": "grounded-realism-low-poly",
+    "intent_summary": "An original, performance-aware fixture with plausible dimensions, construction, and restrained surface detail."
+  },
+  "references": [],
+  "evidence_labels": {
+    "reference_fidelity": "unconstrained-original-design",
+    "construction_realism": "physically-inferred",
+    "surface_realism": "modeling-placeholder"
+  },
+  "style_axes": {
+    "proportion_strategy": "Plausible real-world scale without heroic exaggeration.",
+    "construction_plausibility": "Parts should communicate how the object is assembled and used.",
+    "shape_language": "Restrained primary forms with readable, moderately softened edges.",
+    "visual_hierarchy": "Silhouette first, construction second, surface detail third.",
+    "geometry_detail_density": "Geometry owns silhouette and construction-scale features.",
+    "material_realism": "Neutral placeholders during modeling.",
+    "surface_frequency": "No microdetail during modeling.",
+    "wear_narrative": "Deferred to an authored material or decal stage.",
+    "presentation_target": "Close review and gameplay-distance readability."
+  },
+  "visual_hierarchy": {
+    "primary_element": "Primary silhouette",
+    "secondary_elements": [
+      "Construction-defining parts"
+    ],
+    "allowed_exaggerations": [],
+    "required_restraints": [
+      "Plausible scale",
+      "Performance-aware topology"
+    ]
+  },
+  "ratios_and_landmarks": [],
+  "surface_targets": {
+    "macro": "Primary modeled forms.",
+    "mid_frequency": "Construction seams and secondary modeled parts.",
+    "micro": "Deferred.",
+    "base_color": "Neutral placeholders.",
+    "roughness": "Neutral placeholders.",
+    "normal_or_height": "Deferred."
+  },
+  "budget": {
+    "target_platform": "Example real-time renderer",
+    "lod_role": "hero/source LOD0 modeling candidate",
+    "base_triangle_target_max": 4500,
+    "evaluated_triangle_target_max": 15000,
+    "material_slots_modeling_max": 6,
+    "future_bake_path": "UV unwrap and bake approved Blender procedural channels to destination-compatible PBR maps"
+  },
+  "review": {
+    "fixed_views": [
+      "front",
+      "side",
+      "top",
+      "three-quarter",
+      "wireframe",
+      "gameplay-distance"
+    ],
+    "gameplay_distance_m": 20.0,
+    "close_review_distance_m": 5.0,
+    "human_acceptance_questions": [
+      "Does the fixture read clearly and plausibly at its intended distance?"
+    ],
+    "known_limits": [
+      "This reusable example does not define a destination engine, collision, LOD chain, or texture bake."
+    ]
+  }
+}

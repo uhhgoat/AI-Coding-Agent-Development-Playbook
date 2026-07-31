@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "supersedes": "grounded-style-contract.json",
+  "revision_reason": "The runtime pass replaces repeated construction meshes with a minimal silhouette-preserving shell and moves fine seams and edge response to texture maps.",
+  "asset": {
+    "name": "Grounded Optimized Runtime Prop",
+    "stage": "runtime pre-texture modeling",
+    "profile": "grounded-realism-low-poly",
+    "intent_summary": "A compact real-time prop whose silhouette and major recesses remain geometric while repeated seams, fine joints, and rounded-edge response move to UVs, normals, and material maps."
+  },
+  "project_profile": {
+    "name": "generic-grounded-real-time",
+    "render_target": "Destination-engine PBR renderer",
+    "toon_default": false,
+    "hyperreal_target": false,
+    "low_poly_allowed_when_form_preserved": true
+  },
+  "budget": {
+    "target_platform": "Example real-time renderer",
+    "lod_role": "optimized LOD0 prop candidate",
+    "output_object_target_max": 3,
+    "base_triangle_target_max": 1500,
+    "evaluated_triangle_target_max": 1500,
+    "modifier_target": 0,
+    "material_slots_modeling_max": 3,
+    "future_bake_path": "Use compact UV islands and destination-compatible PBR maps for seams, joints, roughness variation, and rounded-edge normal response."
+  }
+}

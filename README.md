@@ -14,7 +14,7 @@ resume, and safely maintain.
 - `samples/module-maps/` - a project-neutral map registry and semantic module
   map example.
 - `samples/skills/` - sample skills split by domain, including general coding,
-  documentation, Unity, Obsidian, and robotics categories.
+  documentation, Unity, Blender, Obsidian, and robotics categories.
 
 ## How To Use This With An Agent
 
