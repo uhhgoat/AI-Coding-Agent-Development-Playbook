@@ -58,6 +58,30 @@ Use longitudinal loops or controlled profile stations where the cross-section
 changes. A groove may use inset topology, a retained Boolean, or a high-to-low
 bake depending on scale and budget.
 
+Treat the point as an authored functional landmark. Compare base and evaluated
+bounds after adding Bevel or subdivision; a modifier can shorten or blunt the
+tip even when the front render still appears pointed. Prefer the explicit
+blade wedge at the point over a global edge-softening modifier.
+
+For a geometry-owned helical grip wrap, retain the editable curve when useful
+but validate the converted/output mesh separately. Curve fill caps do not
+guarantee a manifold result in every conversion path. A runtime-ready closed
+wrap needs explicit start/end caps or a direct capped tube mesh.
+
+Treat the blade shoulder, hidden tang, guard contour, and any terminal
+ornament centers as separate construction landmarks. If the blade shoulder
+moves, recheck that it does not protrude below the intended guard contour and
+extend the hidden tang overlap when necessary. Center a multi-part finial,
+ring cluster, or quatrefoil on the structural guard-tip landmark as a complete
+assembly; overall ornament bounds are not a substitute for the attachment
+center.
+
+When rotating mirrored multi-part terminal sets in the weapon's profile plane,
+rotate each complete set around its own attachment hub. Use opposite signed
+angles on named left/right counterparts when exact per-object mirror pairing
+must survive, then validate the resulting set silhouette, hub position, and
+ring-to-hub radius independently.
+
 ### Axe
 
 Separate:
@@ -171,10 +195,15 @@ blade body differs. The mesh split is optional; the semantic mask is required.
 - Opposite side confirms real symmetry or intended asymmetry.
 - Edge-on and top views confirm thickness and taper.
 - All points remain sharp enough for the style.
+- Base and evaluated tip landmarks remain inside the declared tolerance.
 - The blade edge reads as a wedge, not a sticker.
 - Head-to-haft, blade-to-grip, and hardware ratios match the contract.
 - Assembly intersections and load paths are plausible.
+- Blade shoulder, hidden tang overlap, guard contour, guard-tip landmarks, and
+  terminal-ornament centers match the construction contract independently.
 - A simple hand/arm proxy has grip and guard clearance.
 - Pivot and local axes support intended engine attachment.
 - Base and evaluated polygon counts meet the budget.
+- Geometry-owned wraps have closed endpoints in both base and evaluated
+  topology.
 - Decorative detail has not hidden a high-impact shape error.

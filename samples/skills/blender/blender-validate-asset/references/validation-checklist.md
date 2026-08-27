@@ -25,6 +25,23 @@ Use the status values `pass`, `warn`, `fail`, and `not-evaluated`.
 - Silhouette and shading are reviewed from fixed views.
 - The current stage is compared with the preceding preserved stage; previews
   are inspected, not merely rendered.
+- The primitive-decomposition record identifies each continuous mass,
+  repeated part, attachment boundary, and continuity contract; selected base
+  topology is appropriate to the form.
+- Annular, revolved, and radial constructions pass a full-circumference check,
+  including the first/last boundary, with no unintended gap, overlap, tangent
+  break, flipped normal, or thickness discontinuity.
+- Curve-derived rails, trims, tubes, and beams are checked after conversion;
+  every intended cap closes its own connected endpoint boundary component in
+  both base and evaluated topology. A visually capped spline is not sufficient
+  evidence.
+- Station-lofted forms are reviewed end-on, broadside, top, low-grazing, and
+  wireframe. Decisive section width/depth ratios, centerline profile, terminal
+  closure, and any declared bilateral correspondence are checked separately.
+- Every raised floor, deck, platform, or terrace transition has a declared
+  transverse support condition. Bulkheads or risers overlap both adjacent
+  levels across the intended width; side walls alone do not pass an otherwise
+  exposed step face.
 
 ## Style intent
 
@@ -64,6 +81,10 @@ Use the status values `pass`, `warn`, `fail`, and `not-evaluated`.
 - Clean, flat silhouette-overlay, and side/three-quarter cage X-Ray views are
   inspected; neither a hidden cage nor a static clearance table alone passes
   fit.
+- For rigid head-worn props, the seating plane is explicit and clearance uses
+  the actual proxy-mesh cross-section at that plane rather than nominal object
+  dimensions or duplicated metadata. Both principal axes meet the declared
+  minimum.
 - Generic-static-envelope, known-body-neutral, and known-body-pose-swept fit
   remain distinct claims.
 
@@ -103,6 +124,14 @@ Use the status values `pass`, `warn`, `fail`, and `not-evaluated`.
   points remain readable.
 - Tang, eye, socket, langet, wedge, grip, guard, or other attachment logic is
   present or explicitly declared fantasy construction.
+- Evaluated bevels preserve declared point, horn, and terminal landmarks.
+- Blade shoulder and hidden tang overlap are checked independently against the
+  guard contour; a visible central langet or guard block is not misidentified
+  as blade geometry.
+- Multi-part terminal ornaments are checked by their attachment hub or
+  declared center against the structural guard/haft tip, then checked as full
+  mirrored assemblies. Matching overall bounds alone is insufficient.
+- Converted or geometry-owned grip wraps have closed start/end topology.
 - A realistic surface does not upgrade heroic proportions to grounded
   construction or historical accuracy.
 - Historical claims remain `not-evaluated` without appropriate authoritative
@@ -125,6 +154,22 @@ Use the status values `pass`, `warn`, `fail`, and `not-evaluated`.
 - Interior, collision, LOD, damage, and historical-confidence status are
   explicit and not inferred from an exterior beauty render.
 
+## Sailing rigs and suspended cloth
+
+- Mast count, deck stations, peak heights, rake, stage overlap, and local axes
+  match the style/decomposition contract.
+- Spar count, spans, taper hierarchy, and attachment centers are checked on
+  the bare support stage before cloth obscures them.
+- Sail count and distribution per mast are explicit; face-on, near-edge,
+  broadside, bow, stern, top, and three-quarter evidence is inspected.
+- Static sails are closed thin shells with intentional camber, lower-edge sag,
+  and support-edge placement; open planes and accidental non-manifold borders
+  fail unless the delivery contract explicitly permits one-sided cards.
+- Sail geometry owns silhouette-scale billow. Canvas materials own weave,
+  panel seams, restrained aging, roughness, and micro-normal response.
+- Ropes, standing rigging, running rigging, cloth simulation, reefing, and
+  animation are separate scope claims and remain `not-evaluated` when omitted.
+
 ## Rigged apparel
 
 - Bone hierarchy, Armature modifiers, parent relationships, and deform flags match the pre-edit manifest.
@@ -137,6 +182,13 @@ Use the status values `pass`, `warn`, `fail`, and `not-evaluated`.
 
 - Material slots and polygon assignments are valid.
 - Procedural material coordinate strategy, scale, exposed parameters, and output channels are documented.
+- A requested characteristic surface such as hammering, grain, weave, or
+  masonry reads as that manufacturing/material structure in close evidence;
+  generic cloudy breakup is not accepted merely because the graph contains
+  several texture nodes.
+- Metallic close/grazing proof avoids clipped white highlights that conceal
+  roughness and normal response, while a separate gameplay-distance view
+  confirms that fine texture does not overwhelm the asset hierarchy.
 - Compare each material and node group with its manifest-declared coordinate
   strategy; do not hard-code `object-local` when an assembly-relative,
   cylindrical, UV, or deliberately shared module space is documented.

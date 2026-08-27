@@ -98,6 +98,9 @@ usable blade, socket, grip, and haft thickness.
 
 Treat upper and lower cutting-edge terminals as explicit silhouette
 landmarks. Do not let a broad Bevel erase a requested horn or beard point.
+Compare the evaluated terminal coordinates with the authored base landmark;
+a visually small bevel can still shorten a sword or spear point outside its
+dimension tolerance.
 When the edge is a tapered wedge, stop the blade body at the wedge's inner
 seam and let the edge component own the outer arc. A full-width blade body
 behind a thinner wedge will occlude the edge in front/back views and does not
@@ -135,6 +138,13 @@ separate dressed frames, trims, or local bevel-weighted regions.
 - Mirror merge distance depends on object-space scale and centerline placement.
 - Array relative offsets depend on source bounds; constant offsets are more stable when exact module spacing matters.
 - Curve deformation depends on deformation axis, origin, transforms, and curve tilt/radius.
+- A bevelled curve that looks capped can still become an open mesh after
+  dependency-graph evaluation or `new_from_object` conversion. After
+  conversion, count connected boundary components on the actual mesh. For an
+  intended closed rail or swept beam, fill each endpoint loop independently,
+  then validate base and evaluated non-manifold edges. Do not assume
+  `use_fill_caps`, one global holes-fill operation, or a clean render proves
+  that both ends closed.
 - Shared mesh data and linked duplicates reduce memory but propagate edits. Choose this deliberately.
 
 ## Finalization

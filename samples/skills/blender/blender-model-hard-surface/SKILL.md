@@ -17,6 +17,7 @@ generic hard-surface workflow.
 ## Workflow
 
 1. Read [the shared Blender contract](../blender-validate-asset/references/shared-contract.md),
+   [primitive-decomposition guidance](references/primitive-decomposition.md),
    [modifier-stack guidance](references/modifier-stacks.md), and
    [the iterative visual-review loop](references/iterative-visual-review.md).
 2. Inspect every input with `blender-inspect`; identify protected or
@@ -25,9 +26,12 @@ generic hard-surface workflow.
    `blender-define-asset-style` to freeze separate reference-fidelity,
    proportion, construction, shape-language, visual-hierarchy, and surface
    targets before geometry. Do not use material realism as a geometry label.
-4. Translate the request and style contract into dimensions, decisive ratios,
-   symmetry, silhouette, thickness, repetition, bevel, topology, and
-   evaluated-budget constraints.
+4. Analyze the asset into the fewest continuous base masses before adding
+   detail. Record each mass's topological class, best-fit primitive, local
+   axis, modification method, attachment boundary, and continuity/seam
+   requirement. Translate the result and style contract into dimensions,
+   decisive ratios, symmetry, silhouette, thickness, repetition, bevel,
+   topology, and evaluated-budget constraints.
 5. When matching a supplied image, read
    [reference-image guidance](references/reference-images.md). Calibrate one
    image-to-world mapping, keep the image as a packed non-export reference,
@@ -87,6 +91,9 @@ generic hard-surface workflow.
 - Do not model logos, labels, scratches, or printed marks as permanent mesh
   relief merely because they appear in the reference. Record them for a
   future decal/material/bake stage.
+- Do not approximate a continuous ring, shell, or revolved body with repeated
+  disconnected panels when a torus, cylinder, sphere, revolved profile, or
+  other matching base topology can own the form directly.
 
 ## Deliverables
 
@@ -98,6 +105,8 @@ generic hard-surface workflow.
   correction, result, and remaining limitations for each reviewed stage.
 - Versioned style contract with decisive ratios and intended review distance
   when appearance is part of acceptance.
+- Primitive-decomposition table with continuous masses, repeated parts,
+  attachment boundaries, and mandatory seam/overlap checks.
 - Reference image fingerprint, calibration, packed reference object, measured
   landmarks, inferred-depth notes, and overlay preview when applicable.
 - For body-worn assets, a non-export body-fit silhouette or cage, sampled

@@ -81,6 +81,65 @@ wallpaper lines.
 Keep the cutting-edge wedge in geometry. The material describes finish, not
 thickness or sharpness.
 
+For a two-material sword blade, review the maintained body and sharpening band
+under the same light. A broad overpowered key can clip both into white strips
+and hide their roughness difference. Use lower-energy neutral and grazing rigs,
+two-scale swatches, and a localized section crop before increasing material
+contrast or scratch strength.
+
+## Polished precious metal and optional restrained gemstones
+
+Treat gold, silver, and similar polished metals as lighting-sensitive
+conductors, not bright yellow or gray paint.
+
+- Keep Metallic at the conductor end and obtain the identity from a plausible
+  metal color plus a controlled roughness range.
+- Select a restrained reference color range before lighting. Do not treat
+  saturated orange-yellow, gray shadows, or isolated white highlights as
+  separate material colors; confirm one coherent alloy under a neutral gray
+  environment and at least two light directions.
+- Use broad low-frequency value drift and restrained directional polishing;
+  dense scratches or strong bump quickly turn ceremonial metal into battered
+  steel.
+- When a restrained precious-metal prop needs visible surface texture, keep
+  the alloy color coherent and place most of the added character in roughness
+  and shallow normal response. A constant Base Color can still support a
+  visibly hand-worked surface through reflected light.
+- Reject generic cloudy Noise as the sole identity of hammered gold. Use an
+  irregular softened cell or impression signal for the characteristic
+  mid-frequency structure, retain a separate fine polish layer, and confirm
+  the result in a localized low-energy grazing crop. If the proof light clips
+  the conductor to white, correct the evidence rig before increasing shader
+  contrast.
+- Preserve midtones under the approved studio rig. A dark background with too
+  little fill can make correct metallic response read almost black, while an
+  overpowered key clips the crown or jewelry into flat yellow-white strips.
+- Check neutral, grazing, and gameplay-distance asset views plus two-scale
+  rounded swatches before changing the metal graph to compensate for one
+  lighting angle.
+- Reject the pass when adjacent parts assigned to the same alloy read as
+  visibly different colors without an authored cause. Check material
+  assignment, normals, coordinate scale, and lighting before adding more
+  procedural variation.
+
+For small colored gems:
+
+- add them only when the style/reference contract calls for them; do not use
+  colored stones as default crown or jewelry detail;
+- let faceted or cabochon geometry provide the decisive highlight changes;
+- keep internal color variation weak and larger than pixel noise;
+- use low but nonzero roughness and only restrained coat/transmission when the
+  real-time target will later use an opaque or simplified shader;
+- judge saturation and prominence on the assigned asset, because large sphere
+  swatches can exaggerate a pastel or milky response that is subordinate at
+  actual gem scale;
+- keep gems below the primary silhouette and metal-mass hierarchy unless the
+  style contract explicitly makes them the focal element.
+
+Record the intended engine path. Blender transmission, coat, and procedural
+normal networks do not transfer through a mesh export; bake approved channels
+or recreate a bounded target-engine shader.
+
 ## Rusted, dirty, or worn metal
 
 Build from causal masks:
@@ -126,6 +185,16 @@ the visible length. On a timber-frame building, vary boards deliberately while
 preserving consistent physical scale. Polished wood narrows roughness and may
 add a weak clear-coat response; it does not remove grain structure.
 
+For a large assembly made from many planks, do not evaluate one virtual-log
+radius across the entire asset. That produces synchronized bullseyes or contour
+bands crossing unrelated boards. Compute the cut pattern in board-local space,
+or derive a stable board index from UVs/object masks and use it to offset each
+board's virtual-log center, phase, and longitudinal origin. A shared
+assembly-relative coordinate system may still keep scale and seams aligned;
+the grain domain must nevertheless represent the individual pieces of wood.
+Use a top or broadside crop to catch whole-assembly synchronization that a
+small material swatch will not reveal.
+
 For coopered barrels and other repeated boards, do not stamp one identical
 cathedral symbol into every cell. Vary each stave or board's virtual-log
 heartline, ring phase, apparent width, and vertical origin within restrained
@@ -164,6 +233,12 @@ art direction.
 
 For toon leather, simplify to a broad color, one gentle grain response, and
 selective edge/contact wear.
+
+Thin leather or cord relief needs an additional identity check. Its curved
+cross-section may expose only a narrow white specular line at asset scale,
+making a valid nonmetallic graph resemble wire. Balance roughness, coat,
+Specular IOR Level, light energy, and base-color visibility on the actual cord
+geometry rather than trusting a large sphere swatch alone.
 
 ## Cloth and woven underlayers
 
@@ -300,6 +375,30 @@ noise far away, revise the geometry or frequency before adding more nodes.
 
 For thatch, use layered cards, curves, or geometry at silhouette scale and a
 fiber material for internal density. Check alpha overdraw if cards are used.
+
+## Sail canvas, mast timber, and spars
+
+Let sail geometry own camber, lower-edge sag, edge tension, and any silhouette
+ripple. A canvas shader should remain subordinate to that form and combine:
+
+- broad warm/cool aging with restrained value contrast;
+- panel or cloth-width seams at a construction-scale interval;
+- fine crossing fibers for weave roughness and a weak normal response;
+- optional causal staining near lower edges, folds, reef points, or hardware;
+- a dry nonmetallic response that does not read as leather or varnished cloth.
+
+Do not use high-contrast noise as a substitute for woven structure. Check the
+material face-on and near edge-on, because overly strong normal response can
+turn a plausible sail into corrugated sheet metal under grazing light. For a
+static game prop, the procedural graph is an editable source and normally
+needs a later UV/PBR bake before engine use.
+
+Round timber needs an explicit longitudinal axis. Use separate axis presets or
+coordinate transforms for vertical masts, transverse yards, and longitudinal
+bowsprits instead of forcing one object-local mapping onto every spar. Keep
+grain and ring contrast lower than the pole silhouette at gameplay distance;
+collars, iron bands, and platform construction should remain readable without
+depending on the wood shader.
 
 ## Dirt, mud, moss, and environmental accumulation
 

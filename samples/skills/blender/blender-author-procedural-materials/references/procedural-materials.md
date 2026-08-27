@@ -94,6 +94,16 @@ construction. Report those axes separately.
 - Review exposed colors and roughness on neutral, two-scale swatches before
   judging the in-context asset under representative key/fill/rim lighting.
   This separates material response from lighting-driven color bias.
+- For a long narrow surface such as a sword blade, a whole-asset or
+  whole-blade render may allocate too few pixels across the material to prove
+  scratches, brushing, or roughness breakup. Add a localized blade-section
+  crop and a grazing-light crop while retaining the full and gameplay views.
+- Very thin nonmetallic relief such as leather cord can catch one bright
+  dielectric highlight and read as metal even when Metallic is correctly
+  zero. Review the assigned asset, not only a sphere: raise plausible
+  roughness, remove unjustified coat, reduce Specular IOR Level when the
+  material supports it, and keep enough color response outside the highlight
+  to preserve identity.
 
 ## Realistic multi-scale surface patterns
 

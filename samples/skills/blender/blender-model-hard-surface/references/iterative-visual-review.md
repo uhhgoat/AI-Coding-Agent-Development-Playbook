@@ -49,6 +49,33 @@ Review in this order so detail does not hide a bad foundation:
 
 Do not optimize low-impact details while a higher-impact issue is still visible.
 
+For a multi-level assembly, inspect every change in floor or deck elevation
+from both travel directions. Side support does not prove that the transverse
+step face is enclosed; an absent bulkhead or riser can make an otherwise
+closed slab read as a floating shelf.
+After adding the support, use a focused transition crop to compare its exposed
+face with the terminal plane of the upper level. Look for a half-thickness
+projection, a dark open edge, a floating top beam, or an unsupported side
+gap. If the wall carries doors or windows, keep their frames and hardware
+separate enough to read at the intended distance and verify that they sit on
+the visible face rather than intersecting the deck lip.
+
+For masts, antennae, spars, cables, or sails, preserve and review a bare-support
+checkpoint before adding the suspended surfaces. Compare mast stations,
+heights, rake, spar spans, taper, and deck clearance from both broadsides, bow,
+stern, top, and a three-quarter silhouette. After adding sails, repeat those
+views and add a near-edge view: a convincing face-on sail can still hide
+excessive billow, intersecting courses, an unclosed shell, or a yard that no
+longer appears to support its upper edge. Treat rigging/ropes as a separate
+scope decision rather than silently using them to rescue weak mast or sail
+placement.
+
+For annular, revolved, or radially repeated work, make full-circumference
+continuity part of macro review. Inspect front, rear, both side views, top,
+and grazing light; then isolate the first/last angular boundary. A clean front
+silhouette does not excuse a rear gap, overlapping end segment, tangent break,
+or local thickness jump.
+
 When the same high-impact volume error survives a smoothing, bevel, normal, or
 subdivision pass, stop tuning the modifier stack. Compare the base wireframe
 to the target volume and replace the primitive or loop flow. A successful
@@ -138,3 +165,12 @@ same stretched or oversized reading as an excessively broad chest. Inspect a
 clean front view, a flat body-silhouette overlay, and side/three-quarter X-Ray
 views. Keep a generic static check separate from known-character neutral fit
 and rigged pose clearance.
+
+For a rigid head-worn prop, declare the seating plane and measure the actual
+proxy-mesh cross-section at that plane. Do not infer clearance from an
+ellipsoid's nominal object dimensions or from duplicated custom properties:
+primitive tessellation and an offset seating plane can change the usable
+width or depth. Compare the crown, circlet, or helmet inner boundary with the
+measured proxy envelope on both principal axes. Correct a mismatched
+non-export proxy before changing already-approved output geometry when the
+proxy, rather than the asset, violates the declared envelope.

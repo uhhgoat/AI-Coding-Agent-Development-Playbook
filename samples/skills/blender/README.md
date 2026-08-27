@@ -47,6 +47,12 @@ low-poly sword normally uses:
 The procedural library targets Blender `4.3+` and was last validated with
 Blender `4.5 LTS`. Revalidate before relying on it with another major version.
 
+The current modeling guidance also incorporates forward-tested lessons for
+continuous annular forms, anatomy-following headwear, evaluated weapon
+landmarks, station-lofted hulls, supported deck transitions, and static
+mast-and-sail assemblies. These are reusable construction and validation rules;
+the private project fixtures and machine-local manifests are not included.
+
 ## Adapting the suite
 
 - Copy the whole `blender/` directory when possible so cross-skill links and
