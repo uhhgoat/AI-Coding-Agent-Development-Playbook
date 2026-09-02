@@ -1,9 +1,9 @@
 # AI Agent Development Workflow Playbook
 
-Author and curator: Matyas Gosztonyi  
-License: MIT. See `LICENSE` in this repository.  
-SPDX-License-Identifier: MIT  
-Status: Public reusable playbook and adaptation guide.  
+Author and curator: Matyas Gosztonyi
+License: MIT. See `LICENSE` in this repository.
+SPDX-License-Identifier: MIT
+Status: Public reusable playbook and adaptation guide.
 
 This playbook was authored and curated by Matyas Gosztonyi with AI-assisted
 drafting and revision. The guidance is intended to be copied, adapted, and
