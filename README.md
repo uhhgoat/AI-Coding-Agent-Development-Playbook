@@ -35,6 +35,9 @@ Then propose and implement a project-specific agent workflow:
   docs/architecture-baseline.md, or map those roles to existing project docs
 - create docs/active-work.md, or an equivalent ownership tracker, if multiple
   people or agents may work at once
+- make the existing milestone and smallest incomplete planned slice authoritative;
+  close that slice before starting another, and do not recommend or add
+  undocumented follow-on work without explicit authorization
 - decide whether recurring repository discovery justifies project module maps;
   if so, create a coverage registry and map modules independently
 - require agents to load only the smallest applicable map, maintain affected

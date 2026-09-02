@@ -24,10 +24,13 @@ This file applies to the current module or subtree. It supplements the root
   broad source discovery. Load related maps only when the task crosses a
   documented boundary.
 - Read the module plan, if one exists.
+- Continue the smallest incomplete, authorized module-plan slice. Close it in
+  the plan before starting another; do not promote an agent-discovered idea
+  into active work or a recommended next task without explicit authorization.
 - Keep the module map current in the same change when nodes, directed
   relationships, boundaries, or sources of truth change.
 - Update the module plan when implementation direction, validation, ownership,
-  or next steps change.
+  slice closure, or an authorized next step changes.
 - Add or update module-specific commands, editor workflows, debug-console
   actions, setup steps, or validation procedures in the command guide or the
   project's equivalent runbook.
@@ -51,4 +54,4 @@ When pausing or completing module work, record:
 - what changed
 - validation run
 - residual risk
-- next intended move
+- next intended move (an authorized item, or `No active next move — await direction.`)

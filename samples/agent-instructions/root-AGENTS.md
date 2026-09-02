@@ -81,10 +81,19 @@ If this repository uses `docs/module-maps/` or an equivalent map layer:
   non-trivial work.
 - Read `docs/active-work.md` or the equivalent ownership tracker when it
   exists.
+- For non-trivial implementation, identify the active milestone and smallest
+  incomplete planned slice before editing. Finish and explicitly close that
+  slice before starting another one.
+- Do not convert agent-discovered ideas into active work, a new milestone, or a
+  recommended next task. Record them only as deferred observations when they
+  matter; new work needs explicit user or project-owner authorization.
 - Do not edit files owned by another active work stream without handoff,
   review scope, coordination, or explicit approval.
 - Durable progress updates should include actor, timestamp, scope, summary,
   verification, and next intended move.
+- A next intended move must be an existing authorized plan item. Once a slice
+  is closed, use `No active next move — await direction.` rather than extending
+  the roadmap.
 - Before merging, rebasing, or cherry-picking, inspect the destination branch's
   latest instructions and maps. Reconcile the combined maps against integrated
   source and do not blindly choose `ours` or `theirs` for derived map files.
@@ -102,7 +111,7 @@ or durable project rules change.
 | Architecture boundary or dependency direction change | `docs/architecture-baseline.md` or equivalent |
 | Mapped node, relationship, source path, boundary, coverage, or baseline change | affected module map and map registry |
 | Merge, rebase, or cherry-pick with differing instructions or maps | destination-instruction and map reconciliation |
-| Validated milestone, failed live test, important clue, or changed next step | `docs/current-status.md` or equivalent |
+| Validated milestone, failed live test, important clue, changed next step, or slice closure | `docs/current-status.md` or equivalent |
 | New standing project rule | `AGENTS.md` |
 | New recurring agent recipe | project skill |
 

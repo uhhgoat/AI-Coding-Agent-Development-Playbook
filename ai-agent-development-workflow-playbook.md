@@ -51,6 +51,40 @@ Each layer has a different job. Do not collapse all context into one long file.
 The workflow works because agents can quickly read the right level of detail
 for the task at hand.
 
+## Plan Authority And Closure
+
+For non-trivial implementation work, the applicable milestone and feature or
+module plan are the authority for what the agent should do next. Agents should
+finish the current documented slice before beginning another one. A direct user
+request can authorize a new slice; an agent's idea, curiosity, or a list of
+possible improvements cannot.
+
+Use the documentation layers deliberately: `current-status.md` identifies the
+active milestone, the relevant feature/module plan identifies its slice, and
+architecture or feature documents set boundaries rather than silently assigning
+new work.
+
+Use these rules:
+
+- Identify the active milestone and smallest incomplete planned slice before
+  implementing. Do not skip ahead to a later phase simply because it is
+  adjacent or attractive.
+- Keep work within the selected slice's stated scope and success criteria.
+  Update the plan only to clarify evidence, record a necessary correction, or
+  close the slice, unless the user explicitly authorizes a scope change.
+- Treat discoveries outside the slice as observations, risks, or deferred
+  options. Record them only when they matter to recovery; do not turn them into
+  active work, a new milestone, or a recommended next task by default.
+- Close a slice explicitly: record its completion state, verification, and any
+  residual uncertainty in the relevant plan and status/ownership records.
+- After closure, do not automatically start, recommend, or assign the next
+  milestone. If an existing plan names an authorized successor, report it as a
+  documented option only. Otherwise write `No active next move — await
+  direction.`
+
+This is not a barrier to responding to a new user request. It prevents an
+agent from silently converting its own ideas into project commitments.
+
 ## Repository Instruction Files
 
 ### Root Agent Instructions
@@ -99,7 +133,7 @@ The skill should include:
 - protected directories
 - documentation files that must stay synchronized
 - coordination rules for multiple people or agents
-- the safest next-development priorities
+- the current approved milestone and close-out-first planning rule
 - current known constraints future agents must not forget
 
 The skill should not become a duplicate of every project document. It should be
@@ -193,7 +227,8 @@ Use a simple format:
 - Files/areas touched: <paths or areas>
 - Summary: <what changed or what was learned>
 - Verification: <commands, tests, logs, or not run>
-- Next intended move: <what should happen next>
+- Next intended move: <an existing authorized plan item, or `No active next
+  move — await direction.`>
 ```
 
 The stamp does not need to be ceremonial. It exists so another agent can see
@@ -481,10 +516,12 @@ code.
 
 ## Next Intended Move
 
-Give the next agent a concrete starting point.
+Give the next agent the smallest incomplete, authorized plan item. After the
+current slice is closed, use `No active next move — await direction.` rather
+than inventing or recommending follow-on work.
 
-1. <Specific next action.>
-2. <Fallback if it fails.>
+1. <Specific documented action.>
+2. <Documented fallback if it fails.>
 
 ## Signed Progress Updates
 
@@ -496,7 +533,7 @@ Give the next agent a concrete starting point.
 - Status:
 - Summary:
 - Verification:
-- Next intended move:
+- Next intended move: <authorized plan item, or `No active next move — await direction.`>
 ````
 
 Update this file whenever:
@@ -510,7 +547,8 @@ Update this file whenever:
 - an important artifact is produced
 
 Do not use `current-status.md` as a full changelog. It should remain a concise
-operational state document.
+operational state document. It must not promote agent-discovered ideas into
+active milestones or next moves without explicit authorization.
 
 ## Command Guide
 
@@ -566,9 +604,9 @@ It should include:
 - safety or risk model
 - data and persistence model
 - interface strategy
-- recommended milestones
+- approved milestone boundaries, when the project has them
 - open questions
-- current recommendation
+- current approved direction
 
 Keep architecture documents explicit about boundaries:
 
@@ -580,7 +618,9 @@ Keep architecture documents explicit about boundaries:
 - command contracts versus natural-language interfaces
 
 Update architecture documents when the shape of the system changes, not for
-every small implementation detail.
+every small implementation detail. They may describe direction and approved
+milestone boundaries, but the current-status and relevant plan files control
+which slice is active.
 
 ## Project Module Maps
 
@@ -635,7 +675,7 @@ A feature document should include:
 - safety and failure behavior
 - test plan
 - current implementation status
-- future work
+- deferred considerations, clearly separated from active work
 
 Feature documents are especially useful when the code is still evolving and
 future agents need to preserve intent.
@@ -687,17 +727,22 @@ A feature or module plan should include:
 - signed change log or dated findings
 - links to code, command docs, architecture docs, logs, and artifacts
 - open questions and next intended move for this work area
+- explicit completion criteria for each phase or slice
 
 Update the plan file whenever:
 
 - a module or feature moves from idea to implementation
 - ownership changes
 - the implementation path changes
-- a new finding changes the next step
+- a new finding changes an authorized next step
 - a validation run confirms or disproves an assumption
 - a safety constraint, rollback path, or failure mode becomes known
 - the task is paused and needs to be resumable later
 - the plan has become stale compared with the code
+
+Do not add a new phase or successor slice merely because the current one was
+completed. New work needs explicit user or project-owner authorization; until
+then, preserve it only as a deferred observation when it matters.
 
 These files are deliberately allowed to be more operational than architecture
 docs. They can contain checklists, staged commands, rejected approaches, current
@@ -772,8 +817,12 @@ Use the same lifecycle for most tasks:
    - For non-trivial work, create a short checklist.
    - For a new module or complex feature, create or update the durable plan
      file before implementation details drift beyond what is written down.
-   - Keep exactly one item actively in progress.
-   - Update the checklist as items complete.
+   - Select the smallest incomplete, authorized slice and keep exactly one item
+     actively in progress.
+   - Update the checklist as items complete, then close the slice in the
+     durable plan and status/ownership record before considering more work.
+   - Do not add or recommend a successor slice unless the user or project owner
+     authorizes it. Keep unrelated discoveries deferred.
    - If the next step is blocked by a user decision, ask one concise question.
 
 7. **Implement**
@@ -831,16 +880,23 @@ Use these tracking layers:
 
 Avoid scattering todos in random source comments. If a todo matters to future
 work, put it in the relevant plan or status doc with context, actor, timestamp,
-and next action.
+and next action. Do not promote an agent-discovered todo into an active next
+action without explicit authorization.
 
 Recommended todo format:
 
 ````markdown
 ## Next Intended Move
 
-1. Validate <specific workflow> using <specific command or test>.
-2. If that passes, update <specific module or doc>.
-3. If it fails, inspect <specific log, service, module, or artifact>.
+1. Complete <specific documented slice> by validating <specific workflow> using
+   <specific command or test>.
+2. If that passes, close <specific documented slice> in <specific plan or
+   status doc>.
+3. If it fails, inspect <specific documented log, service, module, or
+   artifact>.
+
+When no authorized slice remains, write: `No active next move — await
+direction.`
 
 ## Open Questions
 
@@ -1180,7 +1236,9 @@ recovery sequence:
 9. Inspect `git status --short`.
 10. Inspect recent logs or exports only if `current-status.md`, `active-work.md`,
    the collaboration log, or the relevant plan file points to them.
-11. Continue from the relevant `Next Intended Move`.
+11. Continue only when the relevant `Next Intended Move` names an authorized,
+    incomplete slice. If it says `No active next move — await direction.`, do
+    not invent work; wait for direction.
 
 This sequence is the reason the documentation set exists.
 
@@ -1453,6 +1511,9 @@ preserving project status.
 - Keep runtime, interfaces, and optional services modular.
 - Check active ownership before touching shared files or active work streams.
 - Do not revert human or agent changes unless explicitly requested.
+- Continue the smallest incomplete, authorized plan slice and close it before
+  starting another. Do not turn agent-discovered ideas into active work or
+  recommendations without explicit authorization.
 - Update `docs/current-status.md` when phase, validation, risks, ownership, or
   next move changes.
 - Update `docs/active-work.md` when active ownership changes and the project
@@ -1544,8 +1605,10 @@ validated result, active ownership, and next intended move.
 
 ## Next Intended Move
 
-1. <Next action.>
-2. <Fallback if it fails.>
+1. <Smallest incomplete, authorized action.>
+2. <Documented fallback if it fails.>
+
+When all authorized work is closed: `No active next move — await direction.`
 
 ## Signed Progress Updates
 
@@ -1557,7 +1620,7 @@ validated result, active ownership, and next intended move.
 - Status:
 - Summary:
 - Verification:
-- Next intended move:
+- Next intended move: <authorized plan item, or `No active next move — await direction.`>
 ````
 
 ### `docs/command-guide.md` Template
@@ -1739,7 +1802,7 @@ tests/
 - Handoff expectations.
 - Stale-work policy.
 
-## Recommended Near-Term Milestones
+## Approved Milestone Boundaries
 
 1. <Milestone>
 
@@ -1747,9 +1810,9 @@ tests/
 
 - <Question>
 
-## Current Recommendation
+## Current Approved Direction
 
-<Short recommendation.>
+<Short approved direction.>
 ````
 
 ### Feature Or Module Plan Template
@@ -1806,6 +1869,10 @@ loss or a pause in development.
 - [ ] <Task>
 - [ ] <Task>
 
+Completion criteria:
+
+- <Observable result and required validation.>
+
 ### Phase 2: <Name>
 
 - [ ] <Task>
@@ -1851,7 +1918,7 @@ loss or a pause in development.
 - Files/areas touched:
 - Summary:
 - Verification:
-- Next intended move:
+- Next intended move: <authorized plan item, or `No active next move — await direction.`>
 
 ## Change Log
 
@@ -1867,8 +1934,11 @@ signed update.
 
 ## Next Session Checklist
 
-1. <Next action.>
-2. <Fallback if it fails.>
+1. <Smallest incomplete, authorized task.>
+2. <Documented fallback if it fails.>
+
+When all authorized tasks are complete: `No active next move — await
+direction.`
 ````
 
 Use this template for development plans, module implementation plans,
@@ -1896,7 +1966,7 @@ areas.
 - Timestamp:
 - Scope:
 - Summary:
-- Next intended move:
+- Next intended move: <authorized plan item, or `No active next move — await direction.`>
 ````
 
 ### Collaboration Log Template
@@ -1922,7 +1992,7 @@ than one feature/module plan.
 - Files/areas touched:
 - Summary:
 - Verification:
-- Next intended move:
+- Next intended move: <authorized plan item, or `No active next move — await direction.`>
 ````
 
 ### Safety Plan Template
@@ -2073,6 +2143,8 @@ A task is done when:
 - command docs are updated for executable changes
 - current status is updated for milestone or validation changes
 - feature/module plan files are updated for active implementation work
+- the completed slice is explicitly closed with its verification and remaining
+  uncertainty recorded
 - affected module maps and registry statuses are updated when mapped nodes,
   relationships, coverage, or integration baselines change
 - destination-branch instructions and maps were checked and reconciled for any
@@ -2102,6 +2174,9 @@ Avoid these:
 - using generated artifacts as the only record of validation
 - leaving commands undocumented
 - leaving future agents without a concrete next step
+- treating every completed slice as permission to start or recommend the next
+  one
+- promoting an agent-discovered idea into active work without authorization
 - using broad refactors to solve narrow requests
 - ignoring dirty worktrees
 - loading every map instead of selecting the smallest applicable map
@@ -2128,11 +2203,13 @@ If you are an AI agent entering a repository that follows this playbook:
 9. Run `git status --short`.
 10. Classify the task and safety level.
 11. Check active ownership and dirty worktree state.
-12. Implement or answer within the existing architecture.
+12. Identify the smallest incomplete, authorized plan slice and implement or
+    answer within that scope.
 13. Update affected maps if source relationships or coverage changed.
-14. Verify.
+14. Verify and explicitly close the slice in the plan and status/ownership
+    record.
 15. Update docs with signed progress notes.
-16. Handoff clearly.
+16. Handoff clearly without proposing undocumented follow-on work.
 
 The goal is not just to complete one task. The goal is to leave the repository
 more recoverable and less collision-prone for the next human or agent than it

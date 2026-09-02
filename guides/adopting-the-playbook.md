@@ -19,10 +19,13 @@ to an existing repository.
 5. Ask it whether repeated repository discovery justifies project module maps.
    If so, create a coverage registry, map modules independently, and add scoped
    loading, maintenance, and branch-reconciliation rules to the instructions.
-6. Ask it to propose project skills only for recurring, durable tasks.
-7. Ask it to add tool-specific shims only after there is one canonical skill
+6. Ask it to make the current milestone and smallest incomplete planned slice
+   authoritative: agents close that slice before beginning another, and may not
+   promote their own ideas into active work or recommended next steps.
+7. Ask it to propose project skills only for recurring, durable tasks.
+8. Ask it to add tool-specific shims only after there is one canonical skill
    body worth sharing across tools.
-8. Review the resulting docs for project-specific facts, team names, private
+9. Review the resulting docs for project-specific facts, team names, private
    paths, secrets, and stale assumptions before committing.
 
 ## Adapt The Shape
@@ -59,6 +62,9 @@ roles, but adapt the structure to the target repository.
 - Keep command syntax and validated workflows in a command guide or equivalent
   runbook.
 - Keep active ownership and handoffs visible when people or agents overlap.
+- Keep the active milestone and smallest incomplete slice visible. Completion
+  must be recorded before another slice starts; agent-discovered ideas remain
+  deferred until explicitly authorized.
 - Keep affected maps synchronized with source changes and reconcile destination
   instructions and map sets during merges, rebases, or cherry-picks.
 - Keep skills focused on repeatable tasks, not one-off debugging notes.
@@ -70,7 +76,8 @@ For a Unity project, the agent might create:
 - a root `AGENTS.md` with Unity version, package constraints, asset boundaries,
   scene/loading conventions, UI framework rules, and serialization guidance
 - a `docs/command-guide.md` with editor, test, build, and validation commands
-- a `docs/current-status.md` with the current milestone and latest test result
+- a `docs/current-status.md` with the current milestone, latest test result,
+  and the next authorized slice (or an explicit await-direction state)
 - one or more Unity skills for recurring patterns such as manager singletons,
   ScriptableObject config maps, asset registration, UI Toolkit screens, or
   custom update dispatch
